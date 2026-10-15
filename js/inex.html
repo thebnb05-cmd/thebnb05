@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TH3 BNB Servicio Técnico - Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d3daea",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c3c0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "outline-variant": "#c0c7d4",
+                        "on-primary-fixed": "#001c38",
+                        "on-secondary-fixed": "#121c2a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-tint": "#0060aa",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#004882",
+                        "tertiary-fixed": "#e2dfff",
+                        "on-surface-variant": "#404752",
+                        "inverse-primary": "#a2c9ff",
+                        "on-surface": "#151c27",
+                        "surface": "#f9f9ff",
+                        "on-background": "#151c27",
+                        "surface-container": "#e7eefe",
+                        "inverse-on-surface": "#ebf1ff",
+                        "background": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#3323cc",
+                        "surface-container-low": "#f0f3ff",
+                        "french-blue": "#318CE7",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#4b41e1",
+                        "on-secondary-container": "#596373",
+                        "secondary": "#555f6f",
+                        "primary": "#005ea6",
+                        "tertiary-container": "#645efb",
+                        "error-red": "#EF4444",
+                        "primary-container": "#0076d0",
+                        "warning-amber": "#F59E0B",
+                        "success-green": "#10B981",
+                        "on-primary-container": "#fdfcff",
+                        "surface-gray": "#F3F4F6",
+                        "secondary-container": "#d6e0f3",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#3d4756",
+                        "primary-fixed": "#d3e4ff",
+                        "surface-variant": "#dce2f3",
+                        "on-tertiary-fixed": "#0f0069",
+                        "outline": "#717783",
+                        "inverse-surface": "#2a313d",
+                        "secondary-fixed-dim": "#bdc7d9",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e2e8f8",
+                        "secondary-fixed": "#d9e3f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "headline-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f9f9ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c7d4;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #717783;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-lowest border-r border-outline-variant docked full-height left-0 w-64 flex flex-col h-screen sticky top-0 transition-colors duration-200 ease-in-out hidden md:flex z-50">
+<div class="p-6 flex flex-col items-center border-b border-outline-variant">
+<img alt="TH3 BNB Logo" class="h-16 w-16 object-contain mb-3" src=""/>
+<h1 class="text-headline-sm font-headline-sm font-bold text-french-blue text-center">TH3 BNB</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Servicio Técnico</p>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1 px-3">
+<!-- Active Item -->
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-french-blue font-bold border-r-4 border-french-blue bg-surface-container-low hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+</li>
+<!-- Inactive Items -->
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">build</span>
+<span class="text-label-md font-label-md">Tickets</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="text-label-md font-label-md">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">groups</span>
+<span class="text-label-md font-label-md">Clients</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">receipt_long</span>
+<span class="text-label-md font-label-md">Billing</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-2 rounded-lg text-error-red hover:bg-error-container transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">logout</span>
+<span class="text-label-sm font-label-sm">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface-gray">
+<!-- TopNavBar (Mobile only for full nav, but used as header here) -->
+<header class="bg-surface border-b border-outline-variant docked full-width top-0 flex justify-between items-center w-full px-margin-mobile md:px-gutter h-16 sticky top-0 z-40">
+<div class="flex items-center md:hidden">
+<button class="text-on-surface-variant p-2 -ml-2 rounded-lg hover:bg-surface-container-high focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<img alt="TH3 BNB Logo" class="h-8 w-8 object-contain ml-2" src=""/>
+</div>
+<div class="flex-1 max-w-md ml-4 md:ml-0">
+<div class="relative focus-within:ring-2 focus-within:ring-french-blue rounded-lg">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-outline-variant rounded-lg leading-5 bg-surface-container-lowest placeholder-outline focus:outline-none focus:border-french-blue focus:ring-1 focus:ring-french-blue sm:text-sm text-body-sm font-body-sm transition-all" placeholder="Buscar tickets, clientes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center ml-4 space-x-2 md:space-x-4">
+<button class="text-on-surface-variant hover:text-french-blue transition-all p-2 rounded-full hover:bg-surface-container-high focus:outline-none relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 block h-2.5 w-2.5 rounded-full bg-error-red ring-2 ring-surface"></span>
+</button>
+<button class="text-on-surface-variant hover:text-french-blue transition-all p-2 rounded-full hover:bg-surface-container-high focus:outline-none hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="relative ml-2">
+<button aria-haspopup="true" class="flex items-center focus:outline-none">
+<img alt="Technician profile avatar" class="h-8 w-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a male technical service specialist wearing a neat collared shirt. He has a friendly but focused expression. The background is a clean, bright, out-of-focus modern office setting. The lighting is soft and professional, emphasizing a trustworthy and competent technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGAe-iQ1OrmqwqaOHqEGq3sAKJ_D6AAPeJOZCsAD7YVDa8wi3KsugR7iHRL3Zz6r5e_aYn8iHepPsOoJ3Ivve1moY4ZTCM0gYSrFXHAjnZfqesf2FNPnj9YytE6106YNiKCY_aTI9JzGUUeXLVPBiChekzDQ5rthA_jmvxLBLnm7T_NfdWWTeyg6Cz2SA4h1btc_1uhJxjP7B72Jx-KZlOXv9RKvQCoe81Zq9FvThS3EAvVS6QML0A3dxoW7JmqbFKKZSDUvsZ5rja"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-gutter">
+<div class="max-w-container-max mx-auto space-y-gutter">
+<!-- Page Header & Quick Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface">Resumen General</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Vista rápida del estado de reparaciones de hoy.</p>
+</div>
+<div class="flex space-x-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center bg-surface-container-lowest border border-outline-variant text-on-surface px-4 py-2 rounded-lg text-label-md font-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined mr-2 text-sm">person_add</span>
+                            Nuevo Cliente
+                        </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center bg-french-blue text-on-primary px-4 py-2 rounded-lg text-label-md font-label-md hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined mr-2 text-sm">add</span>
+                            Nuevo Ticket
+                        </button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Tickets Activos</p>
+<p class="text-headline-lg font-headline-lg font-bold text-on-surface mt-1">42</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Pendientes de Pieza</p>
+<p class="text-headline-lg font-headline-lg font-bold text-on-surface mt-1">12</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-error-container flex items-center justify-center text-error-red">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hourglass_empty</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Completados Hoy</p>
+<p class="text-headline-lg font-headline-lg font-bold text-on-surface mt-1">8</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-surface-container-low flex items-center justify-center text-success-green">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Ingresos (Semana)</p>
+<p class="text-headline-lg font-headline-lg font-bold text-on-surface mt-1">$3,240</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid for Main Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Table Section (Takes up 2 columns on lg) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">Tickets de Reparación Activos</h3>
+<button class="text-french-blue text-label-md font-label-md hover:underline focus:outline-none">Ver todos</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm uppercase tracking-wider">
+<th class="px-5 py-3 font-medium">ID Ticket</th>
+<th class="px-5 py-3 font-medium">Cliente</th>
+<th class="px-5 py-3 font-medium">Dispositivo</th>
+<th class="px-5 py-3 font-medium">Estado</th>
+<th class="px-5 py-3 font-medium">Ingreso</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-5 py-4 font-code">#TK-1042</td>
+<td class="px-5 py-4 font-medium">María González</td>
+<td class="px-5 py-4">iPhone 13 Pro (Pantalla)</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-low text-french-blue border border-french-blue/20">
+                                                En Proceso
+                                            </span>
+</td>
+<td class="px-5 py-4 text-on-surface-variant">Hoy, 09:30</td>
+</tr>
+<tr class="bg-surface-gray/30 hover:bg-surface-bright transition-colors">
+<td class="px-5 py-4 font-code">#TK-1041</td>
+<td class="px-5 py-4 font-medium">Empresa ABC S.A.</td>
+<td class="px-5 py-4">Dell XPS 15 (Batería)</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error-container/50 text-error-red border border-error-red/20">
+                                                Pendiente Pieza
+                                            </span>
+</td>
+<td class="px-5 py-4 text-on-surface-variant">Ayer</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-5 py-4 font-code">#TK-1040</td>
+<td class="px-5 py-4 font-medium">Carlos Ruiz</td>
+<td class="px-5 py-4">Samsung S22 (Puerto Carga)</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-green/10 text-success-green border border-success-green/20">
+                                                Listo p/ Entregar
+                                            </span>
+</td>
+<td class="px-5 py-4 text-on-surface-variant">Ayer</td>
+</tr>
+<tr class="bg-surface-gray/30 hover:bg-surface-bright transition-colors">
+<td class="px-5 py-4 font-code">#TK-1038</td>
+<td class="px-5 py-4 font-medium">Ana López</td>
+<td class="px-5 py-4">MacBook Air M1 (Teclado)</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-low text-french-blue border border-french-blue/20">
+                                                En Proceso
+                                            </span>
+</td>
+<td class="px-5 py-4 text-on-surface-variant">12 Oct</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-5 py-4 font-code">#TK-1035</td>
+<td class="px-5 py-4 font-medium">Taller Mecánico XYZ</td>
+<td class="px-5 py-4">PC Escritorio (Diagnóstico)</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-amber/10 text-warning-amber border border-warning-amber/20">
+                                                Recién Ingresado
+                                            </span>
+</td>
+<td class="px-5 py-4 text-on-surface-variant">11 Oct</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Activity Feed Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col h-full">
+<div class="p-5 border-b border-outline-variant">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">Actividad Reciente</h3>
+</div>
+<div class="p-5 flex-1 overflow-y-auto">
+<div class="flow-root">
+<ul class="-mb-8">
+<!-- Feed Item 1 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-success-green/20 flex items-center justify-center ring-8 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-success-green text-sm">check</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface">Ticket <a class="font-medium text-french-blue" href="#">#TK-1039</a> marcado como completado.</p>
+</div>
+<div class="text-right text-label-sm font-label-sm whitespace-nowrap text-on-surface-variant">
+<time datetime="2020-09-20">Hace 10 min</time>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Feed Item 2 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center ring-8 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-sm">inventory_2</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface">Se agregó stock: <span class="font-medium">Pantalla iPhone 13 Pro (x5)</span>.</p>
+</div>
+<div class="text-right text-label-sm font-label-sm whitespace-nowrap text-on-surface-variant">
+<time datetime="2020-09-20">Hace 1h</time>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Feed Item 3 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-outline-variant"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-surface-container-high flex items-center justify-center ring-8 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface">Nuevo cliente registrado: <a class="font-medium text-french-blue" href="#">María González</a>.</p>
+</div>
+<div class="text-right text-label-sm font-label-sm whitespace-nowrap text-on-surface-variant">
+<time datetime="2020-09-20">Hoy, 09:15</time>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Feed Item 4 (Last, no line) -->
+<li>
+<div class="relative pb-8">
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-warning-amber/20 flex items-center justify-center ring-8 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-warning-amber text-sm">note_add</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface">Nuevo ticket creado <a class="font-medium text-french-blue" href="#">#TK-1042</a>.</p>
+</div>
+<div class="text-right text-label-sm font-label-sm whitespace-nowrap text-on-surface-variant">
+<time datetime="2020-09-20">Hoy, 09:30</time>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="mt-6">
+<button class="w-full flex justify-center items-center px-4 py-2 border border-outline-variant shadow-sm text-label-md font-label-md rounded-lg text-on-surface bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+                                    Ver historial completo
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
